@@ -9,9 +9,9 @@
 		<div class="comment">
 			<span calss="comment-star">
 				<strong></strong>
-				<span>&#xe7bb;&#xe7bb;&#xe7bb;&#xe7bb;&#xe7bb;</span>
+				<span class="iconfont">&#xe7bb;&#xe7bb;&#xe7bb;&#xe7bb;&#xe7bb;</span>
 			</span>
-			<span class="comment-cont">283463条评论</span>
+			<span class="comment-cont"><em>283463</em>条评论</span>
 		</div>	
 		<div class="price">
 			<span class="price-acount">￥<em>399</em></span>起

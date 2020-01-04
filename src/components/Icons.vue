@@ -4,7 +4,7 @@
 		  <swiper-slide v-for='(items,index) of pages' :key="index">
 			  <div class="icon" v-for="item of items" :key="item.id">
 				  <div class="icon-img">
-					  <img :src="item.iconImg">
+					  <img :src="$baseUrl + item.iconImg">
 				  </div>
 				  <p class="icon-content">{{item.iconCont}}</p>
 			  </div>
@@ -16,23 +16,24 @@
 <script>
   export default {
 	name:'HomeIcon',
+	props:['iconData'],
     data(){
 		return {
 			swiperOption: {
 			  autoplay: false
 			},
-			iconList:[
-				{id:'01',iconImg:"http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",iconCont:'景点门票'},
-				{id:'02',iconImg:"http://img1.qunarzz.com/piao/fusion/1803/de/f26be47a6bf02a02.png",iconCont:'上海迪士尼'},
-				{id:'03',iconImg:"http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png",iconCont:'一日游'},
-				{id:'04',iconImg:"http://img1.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png",iconCont:'上海海昌'},
-				{id:'05',iconImg:"http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",iconCont:'野生动物园'},
-				{id:'06',iconImg:"http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",iconCont:'景点门票'},
-				{id:'07',iconImg:"http://img1.qunarzz.com/piao/fusion/1803/de/f26be47a6bf02a02.png",iconCont:'上海迪士尼'},
-				{id:'08',iconImg:"http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png",iconCont:'一日游'},
-				{id:'09',iconImg:"http://img1.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png",iconCont:'上海海昌'},
-				{id:'10',iconImg:"http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",iconCont:'野生动物园'}
-			]
+			// iconList:[
+			// 	{id:'01',iconImg:"http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",iconCont:'景点门票'},
+			// 	{id:'02',iconImg:"http://img1.qunarzz.com/piao/fusion/1803/de/f26be47a6bf02a02.png",iconCont:'上海迪士尼'},
+			// 	{id:'03',iconImg:"http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png",iconCont:'一日游'},
+			// 	{id:'04',iconImg:"http://img1.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png",iconCont:'上海海昌'},
+			// 	{id:'05',iconImg:"http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",iconCont:'野生动物园'},
+			// 	{id:'06',iconImg:"http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",iconCont:'景点门票'},
+			// 	{id:'07',iconImg:"http://img1.qunarzz.com/piao/fusion/1803/de/f26be47a6bf02a02.png",iconCont:'上海迪士尼'},
+			// 	{id:'08',iconImg:"http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png",iconCont:'一日游'},
+			// 	{id:'09',iconImg:"http://img1.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png",iconCont:'上海海昌'},
+			// 	{id:'10',iconImg:"http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",iconCont:'野生动物园'}
+			// ]
 		}
 	},
 	
@@ -40,7 +41,7 @@
 	computed:{
 		pages(){
 			let pages = [];//空数组，二维数组
-			this.iconList.forEach((val,idx)=>{
+			this.iconData.forEach((val,idx)=>{
 				let page = Math.floor(idx/8); //计算页码
 				if(!pages[page]){//page为0时，如果不存在
 					pages[page] = [];//让pages的元素变为一个空数组

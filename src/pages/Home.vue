@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-    <Banner/>
-    <Icons/>
+	<Header/>
+    <Banner :data="swiperList" />
+    <Icons :iconData="iconList" />
 	<Favorite/>
 	<DCell v-for="item of 4"/>
 	<div class="weekend-title">周末去哪儿</div>
@@ -10,17 +11,47 @@
 </template>
 
 <script>
+	import Header from '@/layouts/Header.vue'
 	import Banner from '@/components/Banner.vue'
 	import Icons from '@/components/Icons.vue'
 	import Favorite from '@/components/Favorite.vue'
 	import DCell from '@/components/d-cell.vue'
 	import DItem from '@/components/d-item.vue'
   export default {
-    data(){return {}},
-    components:{
-		Banner,Icons,Favorite,DCell,DItem
+    data(){
+			return {
+			swiperList:[],
+			iconList:[]
+		}
 	},
-    mounted(){},
+    components:{
+		Banner,Icons,Favorite,DCell,DItem,Header
+	},
+    mounted(){
+		// this.$axios({
+		// 	url:'/api/icons',
+		// 	params:{_page:1,_limit:9}
+		// }).then(
+		// 	res=>this.iconList=res.data.data
+		// 	// res=>console.log(res)
+		// ),
+		
+		this.$axios({
+			url:'/api/Banner',
+			params:{_page:1,_limit:4}
+		}).then(
+			// res=>this.swiperList=res.data.data
+			res=>console.log(res.data.data)
+		)
+		
+		// this.$axios({
+		// 	url:'/api/Home',
+		// 	params:{_page:1,_limit:4}
+		// }).then(
+		// 	// res=>this.cellList=res.data.data
+		// 	// res=>console.log(res.data.data)
+		// )
+	},
     updated(){},
     methods:{}
   }

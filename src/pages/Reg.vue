@@ -1,19 +1,30 @@
 <template>
   <div class="reg">
-    <h3>reg</h3>
+    <DetailHeader title="注册"/>
+	<form>
+		<InputCell label="手机号" placeholder="请输入手机号"/>
+	</form>
+	
   </div>
 </template>
 
 <script>
-  export default {
-    data(){return {}},
-    components:{},
-    mounted(){},
-    updated(){},
-    methods:{}
-  }
+	import DetailHeader from "@/components/DetailHeader.vue"
+	import InputCell from "@/components/input-cell.vue"
+	
+	export default {
+		data(){return {}},
+		components:{
+			DetailHeader,InputCell
+		},
+		mounted(){},
+		updated(){},
+		methods:{}
+	}
 </script>
 
-<style scoped>
-  .reg{}
+<style scoped lang="scss">
+  .reg{
+	  
+  }
 </style>
