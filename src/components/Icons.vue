@@ -16,7 +16,12 @@
 <script>
   export default {
 	name:'HomeIcon',
-	props:['iconData'],
+	props:{
+		iconData:{
+			type:Array,
+			default:[]
+		}
+	},
     data(){
 		return {
 			swiperOption: {

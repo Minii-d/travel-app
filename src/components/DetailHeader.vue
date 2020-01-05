@@ -1,11 +1,11 @@
 <template>
 	<div class="detail-header">
 		<div class="sub-nav">
-			<div class='header-left'>
+			<div class='header-left' @click="goBack">
 				<span class="iconfont">&#xe624;</span> 
 			</div>
 			<div class='header-title'>{{title}}</div>
-			<div class='header-right' >{{right}}</div>
+			<div class='header-right' @click="go">{{right}}</div>
 		</div>
 		<div class="sub-head"></div>
 	</div>
@@ -17,7 +17,7 @@
 	props:{
 		title:{
 			type:String,
-			default:"大标题"
+			default:""
 		},
 		right:{
 			type:String,
@@ -25,6 +25,14 @@
 		}
 	},
     components:{},
+	methods:{
+		go(){
+			 this.right && this.$router.push('/Reg')
+		},
+		goBack(){
+			this.$router.go(-1)
+		}
+	}
 
   }
 </script>
@@ -39,7 +47,7 @@
 	   line-height: .86rem;
 	   background: $bg-color;
 	   color: #fff;
-	   font-size: .30rem;
+	   font-size: .32rem;
 	   width:100%; 
 	   position: fixed;
 	   z-index: 9999;
@@ -49,7 +57,7 @@
 		  font-weight: 700;
 		  padding: 0 .1rem;
 		  .iconfont{
-		  	  font-size: .12rem;
+		  	  font-size: .24rem;
 		  }
 	  }
 	   .header-center{
@@ -59,10 +67,8 @@
 		  min-width: 1.04rem;
 		  padding: 0 .1rem;
 		  text-align: center;
-		  color: #fff; 
-		.iconfont{
-			  font-size: .12rem;
-		}
+		  font-size: .30rem;
+		  color: #75ffff;
 	  }
   }
   .sub-head{

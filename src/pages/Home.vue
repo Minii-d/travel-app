@@ -6,7 +6,7 @@
 	<Favorite/>
 	<DCell v-for="item of 4"/>
 	<div class="weekend-title">周末去哪儿</div>
-	<DItem v-for="val of 4"/>
+	<DItem :cellList="cellList"/>
   </div>
 </template>
 
@@ -21,36 +21,37 @@
     data(){
 			return {
 			swiperList:[],
-			iconList:[]
+			iconList:[],
+			cellList:[]
 		}
 	},
     components:{
 		Banner,Icons,Favorite,DCell,DItem,Header
 	},
     mounted(){
-		// this.$axios({
-		// 	url:'/api/icons',
-		// 	params:{_page:1,_limit:9}
-		// }).then(
-		// 	res=>this.iconList=res.data.data
-		// 	// res=>console.log(res)
-		// ),
+		this.$axios({
+			url:'/api/icons',
+			params:{_page:1,_limit:9}
+		}).then(
+			res=>this.iconList=res.data.data
+			// res=>console.log(res.data.data)
+		),
 		
 		this.$axios({
 			url:'/api/Banner',
 			params:{_page:1,_limit:4}
 		}).then(
-			// res=>this.swiperList=res.data.data
-			res=>console.log(res.data.data)
+			res=>this.swiperList=res.data.data
+			// res=>console.log(res.data.data)
 		)
 		
-		// this.$axios({
-		// 	url:'/api/Home',
-		// 	params:{_page:1,_limit:4}
-		// }).then(
-		// 	// res=>this.cellList=res.data.data
-		// 	// res=>console.log(res.data.data)
-		// )
+		this.$axios({
+			url:'/api/Column',
+			params:{_page:1,_limit:3}
+		}).then(
+			res=>this.cellList=res.data.data
+			// res=>console.log(res.data.data)
+		)
 	},
     updated(){},
     methods:{}

@@ -19,5 +19,8 @@ import './config/template'
 
 new Vue({
   render: h => h(App),
-  router
+  router,
+  data:{
+    bLogin:true,
+  }
 }).$mount('#app')

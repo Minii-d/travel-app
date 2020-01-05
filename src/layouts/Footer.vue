@@ -27,10 +27,10 @@
 			width:100%;
 			height: .86rem;
 			line-height: .86rem;
-			background: $bg-color;
-			color: #fff;
+			background: #eee;
+			color: #212121;
 			// border-top:.01rem solid #bbb;
-			box-shadow: 0 0 .01rem #666;
+			box-shadow: 0 0 .05rem #666;
 			position: fixed;
 			bottom: 0;
 			z-index:9999;
@@ -39,7 +39,7 @@
 			width:100%;	
 			li.active{
 				font-weight: 700;
-				color: #EEEEEE;
+				color: $bg-color;
 			}
 		}
 		.foot{

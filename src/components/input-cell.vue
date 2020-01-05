@@ -1,6 +1,6 @@
 <template>
 	<div class="input-cell">
-		<label>{{label}}</label>
+		<label >{{label}}</label>
 		<input type="text" :value="value" :placeholder="placeholder" @input="$emit('input',$event.target.value)"/>
 	</div>
 </template>
@@ -28,21 +28,24 @@
 
 <style scoped lang="scss">
   .input-cell{
-	width: 100%;
-	border-bottom: .01rem solid #ddd;
-	line-height: .45rem;
 	display: flex;
+	width: 100%;
+	height: .9rem;
+	line-height: .9rem;
+	// border-bottom: .01rem solid #ddd;
+	font-size: .32rem;	
 	label{
-		display: block;
-		width: .9rem;
 		color: #19a9ba;
+		box-sizing: border-box;
+		width: 1.6rem;
 	}
 	input{
 		flex: 1;
-		width: .01rem;
-		height: .3rem;
 		border: 0;
-		line-height: 1.5;
+		width: 100%;
+		line-height: 100%;
+		font-family: "microsoft yahei";
+		vertical-align: bottom;
 	}
   }
 </style>

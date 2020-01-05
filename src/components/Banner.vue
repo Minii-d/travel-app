@@ -18,7 +18,12 @@
 <script>
 	export default{
 		name:'HomeSwiper',
-		props:['data'],		//待配置
+		props:{
+			data:{
+				type:Array,
+				default:[]
+			}
+		},		//待配置
 		data(){
 			return {
 				swiperOption:{ //默认为空

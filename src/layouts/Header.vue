@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="header-nav">
-		<div class='header-left'>
+		<div class='header-left' @click="goBack">
 			<span class="iconfont">&#xe624;</span> <!--左箭头的16进制码-->
 		</div>
 		<div class='header-input'>
@@ -24,9 +24,11 @@
     components:{
 		name:'Header'
 	},
-    mounted(){},
-    updated(){},
-    methods:{}
+    methods:{
+		goBack(){
+			this.$router.go(-1)
+		}
+	}
   }
 </script>
 

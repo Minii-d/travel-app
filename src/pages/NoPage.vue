@@ -1,19 +1,31 @@
 <template>
-  <div class="reg">
-    <h3>NoPage</h3>
+  <div class="noPage">
+    <LoginHeader/>
+	<img src="../../public/images/order_login.png" >
+	<p class="notice">啊噢~走丢了~<br><a href="/">返回首页</a></p>
   </div>
 </template>
 
 <script>
-  export default {
-    data(){return {}},
-    components:{},
-    mounted(){},
-    updated(){},
-    methods:{}
-  }
+	import LoginHeader from "../components/DetailHeader.vue"
+	export default {
+		data(){return {}},
+		components:{
+			LoginHeader
+		},
+	}
 </script>
 
-<style scoped>
-  .reg{}
+<style scoped lang="scss">
+  .noPage{
+	  text-align: center;
+	  height: 100%;
+	  img{
+		  margin-top: 10%;
+	  }
+	  .notice{
+		  font: .16rem/3 "";
+		  color: #666; 
+	  }
+  }
 </style>

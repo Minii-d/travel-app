@@ -1,13 +1,15 @@
 <!-- 周末去哪单项 -->
 <template>
-  <div class="d-item">
-	<div class="item-img">
-	  <img src="http://img1.qunarzz.com/sight/source/1511/ea/7f43191b747bb9.jpg_r_640x214_f58e829d.jpg" />
-	</div>
-	<div class="item-info">
-		<!-- 溢出隐藏出现省略号 -->
-	  <p class="item-info__title ellipsis">上海泡汤圣地</p>
-	  <p class="item-info__cont ellipsis">上海的朋友总会问，哪里可以泡温泉，哪里的温泉好呢？这里有最好最全的上海温泉</p>
+  <div class="d-item" >
+	<div v-for="item of cellList" :key="item._id">
+		<div class="item-img">
+		  <img :src="$baseUrl + item.imgUrl" />
+		</div>
+		<div class="item-info">
+			<!-- 溢出隐藏出现省略号 -->
+		  <p class="item-info__title ellipsis">{{item.title}}</p>
+		  <p class="item-info__cont ellipsis">{{item.content}}</p>
+		</div>
 	</div>
   </div>
 </template>
@@ -15,6 +17,12 @@
 <script>
   export default {
     data(){return {}},
+	props:{
+		cellList:{
+			type:Array,
+			default:[]
+		}
+	},
     components:{},
     mounted(){},
     updated(){},

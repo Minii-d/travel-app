@@ -8,7 +8,7 @@
 		<h3 class="title">上海迪士尼乐园</h3>
 		<div class="comment">
 			<span calss="comment-star">
-				<strong></strong>
+				<strong class="iconfont">&#xe7bb;&#xe7bb;&#xe7bb;&#xe7bb;&#xe7bb;</strong>
 				<span class="iconfont">&#xe7bb;&#xe7bb;&#xe7bb;&#xe7bb;&#xe7bb;</span>
 			</span>
 			<span class="comment-cont"><em>283463</em>条评论</span>
@@ -32,7 +32,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 	.d-cell{
 		background: #fff;
 		display: flex;
@@ -59,6 +59,20 @@
 	.d-cell__right .comment{
 		margin-top: .14rem;
 		height: .34rem;
+		.comment-star{
+			position: relative;
+			strong{
+				position: absolute;
+				color:#ff8300;
+				top: 0;
+				left: 0;
+			}
+			span{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		}
 	}
 	.d-cell__right .comment .comment-cont{
 		color: #616161;
