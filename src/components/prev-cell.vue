@@ -1,26 +1,44 @@
 <template>
   <div class="prev-cell">
     <div class="prev-cell__cont">
-		<h5>【即买即用】东方明珠看上海·超值票成人票</h5>
-		<p><img src="https://img1.qunarzz.com/piao/fusion/1804/94/3537f6969acc0c02.png">21:00前购买随用</p>
-		<ul>
-			<li>自营</li>
-			<li>无需换票</li>
-			<li>不可退</li>
+		<h5>{{objList.ticketName}}</h5>
+		<p><img src="https://img1.qunarzz.com/piao/fusion/1804/94/3537f6969acc0c02.png">{{objList.message}}</p>
+		<ul >
+			<li v-for="(val,idx) of objList.tips">{{val}}</li>
+			<!-- <li>无需换票</li> -->
+			<!-- <li>不可退</li> -->
 		</ul>
 	</div>
-	<DdBtn class="dd-btn"/>
+	<DdBtn class="dd-btn" :text="text" :per="per" :perPrice="objList.perprice"/>
   </div>
 </template>
 
 <script>
 	import DdBtn from "./dd-btn.vue"
 	export default {
+		props:{
+			text:{
+				type:String,
+				default:''
+			},
+			per:{
+				type:String,
+				default:""
+			},
+			objList:{
+				type:Object,
+				default:function(){
+					return {}
+				}
+			}
+		},
 		data(){return {}},
 		components:{
 			DdBtn
 		},
-		mounted(){},
+		mounted(){
+			// console.log(this.objList)
+		},
 		updated(){},
 		methods:{}
 	}
@@ -30,9 +48,12 @@
   .prev-cell{
 	  position: relative;
 	  .prev-cell__cont{
+		  margin-right: 1.6rem;
 		  h5{
 			  font-size: .28rem;
 			  line-height: .52rem;
+			  max-height: 1.04rem;
+			  overflow: hidden;
 		  }
 		  p{
 			  height: .32rem;

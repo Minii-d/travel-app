@@ -1,8 +1,8 @@
 <template>
   <div class="dd-btn">
 	<a href="">
-		<p class="price">￥<i>195</i></p>
-		<input type="button" :value="text" class="pre-btn" />
+		<p class="price">￥<i>{{perPrice}}</i><span>{{per}}</span></p>
+		<input type="button" :value="text" class="pre-btn" v-if="text" />
 	</a>
 	
   </div>
@@ -14,8 +14,16 @@
     props:{
       text:{
         type:String,
-        default:'预订'
-      }
+        default:""
+      },
+	  per:{
+		  type:String,
+		  default:""
+	  },
+	  perPrice:{
+		  type:Number,
+		  default:9999
+	  }
     },
     components:{},
     mounted(){},
@@ -36,6 +44,9 @@
 			font-size: .24rem;
 			i{
 				font-size: .36rem;
+			}
+			span{
+				color: #666;
 			}
 		}
 		.pre-btn{

@@ -4,8 +4,8 @@
 			<span class="back-bg"></span>
 			<span class="back-icon iconfont">&#xe624;</span>
 		</div>
-		<img src="//img1.qunarzz.com/tuan/team2/1507/2c/83e0e0e7ae082a.jpg_600x330_2285872d.jpg">
-		<p class="banner-cont">东方明珠（AAAAA景区）</p>
+		<img :src="$baseUrl + bannerData.cellImg">
+		<p class="banner-cont">{{bannerData.detail.name}}</p>
 	</div>
 
 </template>
@@ -13,13 +13,20 @@
 <script>
 
   export default {
-
+	props:{
+		 bannerData:{
+			type:Object,
+			default:function(){
+				return {}
+			}
+		 }
+	}, 
     data() {
-      return {
-
-      }
+      return {}
     },
-   
+	mounted() {
+		// console.log(this.bannerData)
+	}
 
   }
   

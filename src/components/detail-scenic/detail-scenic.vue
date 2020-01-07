@@ -1,11 +1,14 @@
 <template>
   <div class="detail-scenice">
     <div class="refer">
-		<h3>入园参考{{title}}</h3>
-		<div class="refer-info">
-			<DetailCell/>
-			<DetailCell/>
-			<DetailCell/>
+		<h3>{{title}}</h3>
+		<div class="refer-info" v-if="title=='入园参考'">
+			<DetailCell title="开放时间" :info="objDetail.referInfo.time"/>
+			<DetailCell title="免费政策" :info="objDetail.referInfo.free"/>
+			<DetailCell title="优惠政策" :info="objDetail.referInfo.youhui"/>
+		</div>
+		<div class="refer-info" v-if="title=='特色玩法'">
+			<DetailCell title="特色玩法"/>
 		</div>
 	</div>
 	<div class="more" @click="getMore">展开更多↓</div>
@@ -21,17 +24,26 @@
 			title:{
 				type: String,
 				default: "标题1"
+			},
+			objDetail:{
+				type:Object,
+				default:function(){
+					return {}
+				}
 			}
 		},
 		components:{
 			DetailCell
 		},
+		
 		methods:{
 			getMore(){
-				let referInfo = document.querySelector(".refer-info");
-				let more = document.querySelector(".more");
-				referInfo.style.height= "auto";
-				more.style.display = "none";				
+				let referInfo = document.querySelectorAll(".refer-info");
+				let more = document.querySelectorAll(".more");
+				for(let i=0;i<referInfo.length;i++){
+					referInfo[i].style.height= "auto";
+					more[i].style.display = "none";					
+				}
 			}
 		}
 	}

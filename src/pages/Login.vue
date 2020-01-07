@@ -9,15 +9,15 @@
 		</div>
 		<div class="form">
 			<div class="mobile" v-if="this.$root.bLogin" >
-				<InputCell label="手机号" placeholder="请输入手机号码" class="inputCell"/>
+				<InputCell label="手机号" placeholder="请输入手机号码" class="inputCell" v-model="mobile"/>
 				<InputCell label="验证码" placeholder="请输入验证码" class="inputCell"/>	
 			</div>
 			<div class="normal" v-else>
-				<InputCell label="账号" placeholder="手机号/邮箱/用户名" class="inputCell"/>
-				<InputCell label="密码" placeholder="请输入密码" class="inputCell"/>		
+				<InputCell label="账号" placeholder="手机号/邮箱/用户名" class="inputCell" v-model="username"/>
+				<InputCell label="密码" placeholder="请输入密码" class="inputCell" v-model="password"/>		
 			</div>
 		</div>
-		<LoginBtn class="loginBtn" value="登录"/>
+		<LoginBtn class="loginBtn" value="登录" @click.native='login'/>
 		
 		<div  class="find-back" v-if="!this.$root.bLogin"><a href="//pay.qunar.com/mobile/h5/personalcenter/sensitive/forgotpwd.htm?ret=https://pay.qunar.com/mobile/h5/personalcenter/myaccount/index.htm?hybridid=mob_uc">找回密码</a></div>
 		
@@ -32,7 +32,10 @@
 	
 	export default {
 		data(){return {
-			
+			username: '',
+			password: '',
+			mobile:'',
+			mess:''
 		}},
 		components:{
 			DetailHeader,InputCell,LoginBtn
@@ -44,6 +47,28 @@
 			},
 			normalLog(){
 				this.$root.bLogin=false;
+			},
+			
+			login() {
+			  let params = new URLSearchParams();
+			  params.append('username', this.username)
+			  params.append('password', this.password)
+			  this.$axios({
+			    url: '/api/login',
+			    method: 'post',
+			    data: params
+			  }).then(
+			    res => {
+			      if(res.data.err==0){
+					  console.log(res.data)
+			        //种token,跳转user
+			        window.localStorage.setItem('token',res.data.token);
+			        this.$router.push('/user')
+			      }else{
+			        this.mess=res.data.msg
+			      }
+			    }
+			  )			  
 			}
 		},
 

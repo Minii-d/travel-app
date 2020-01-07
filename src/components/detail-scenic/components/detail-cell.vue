@@ -2,9 +2,10 @@
   <div class="detail-cell">
     <h4>{{title}}</h4>
     <div class="cell-info">
-    	8:00-22:00；<br/>
-    	最晚入园时间21:30。 东方明珠地标乐园-全球奇幻旅行：10:00-21:30
+<!--    	8:00-22:00；<br/>
+    	最晚入园时间21:30。 东方明珠地标乐园-全球奇幻旅行：10:00-21:30 -->
 		{{info}}
+		<!-- {{titleinfo}} -->
     </div>
   </div>
 </template>
@@ -20,6 +21,10 @@
 	  info:{
 		 type:String,
 		 default:'内容内容内容内容' 
+	  },
+	  titleinfo:{
+		  type:String,
+		  default:""
 	  }
 	},
     components:{},

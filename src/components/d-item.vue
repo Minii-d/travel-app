@@ -1,14 +1,14 @@
 <!-- 周末去哪单项 -->
 <template>
   <div class="d-item" >
-	<div v-for="item of cellList" :key="item._id">
+	<div>
 		<div class="item-img">
-		  <img :src="$baseUrl + item.imgUrl" />
+		  <img :src="$baseUrl + cellList.imgUrl" />
 		</div>
 		<div class="item-info">
 			<!-- 溢出隐藏出现省略号 -->
-		  <p class="item-info__title ellipsis">{{item.title}}</p>
-		  <p class="item-info__cont ellipsis">{{item.content}}</p>
+		  <p class="item-info__title ellipsis">{{cellList.title}}</p>
+		  <p class="item-info__cont ellipsis">{{cellList.content}}</p>
 		</div>
 	</div>
   </div>
@@ -19,8 +19,10 @@
     data(){return {}},
 	props:{
 		cellList:{
-			type:Array,
-			default:[]
+			type:Object,
+			default:function(){
+			  return {}
+			}
 		}
 	},
     components:{},

@@ -20,7 +20,7 @@ mark{background-color:transparent}
 a,ins,s,u,del{text-decoration:none}
 sup,sub{vertical-align:baseline}
 html {overflow-x: hidden;height: 100%;font-size:13.037vw;-webkit-tap-highlight-color: transparent;}
-body {font-family: "Microsoft Yahei", Arial, "Helvetica Neue", Helvetica, sans-serif;color: #212121;font-size: .28em;line-height: 1;-webkit-text-size-adjust: none;background: #eee;height: 100%;}
+body {font-family: "Microsoft Yahei", Arial, "Helvetica Neue", Helvetica, sans-serif;color: #212121;font-size: .28em;line-height: 1;-webkit-text-size-adjust: none;background: #eee;}
 hr {height: .02rem;margin: .1rem 0;border: medium none;border-top: .02rem solid #cacaca;}
 a {color: #25a4bb;text-decoration: none;}
 

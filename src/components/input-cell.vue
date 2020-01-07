@@ -32,8 +32,7 @@
 	width: 100%;
 	height: .9rem;
 	line-height: .9rem;
-	// border-bottom: .01rem solid #ddd;
-	font-size: .32rem;	
+	font-size: .30rem;	
 	label{
 		color: #19a9ba;
 		box-sizing: border-box;

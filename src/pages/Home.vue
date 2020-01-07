@@ -4,9 +4,26 @@
     <Banner :data="swiperList" />
     <Icons :iconData="iconList" />
 	<Favorite/>
-	<DCell v-for="item of 4"/>
+	
+	<!-- 猜你喜欢渲染 -->
+	<router-link 
+		v-for="(val,idx) of productData" 
+		:key="idx"
+		:to="`/detail/${val._id}?dataName=home`"
+	>
+		<DCell :productData="val" />		
+	</router-link>
+	
 	<div class="weekend-title">周末去哪儿</div>
-	<DItem :cellList="cellList"/>
+	
+	<!-- 周末去哪渲染 -->
+	<router-link
+	  v-for="(item,index) of cellList"
+	  :key="item._id"
+	  :to="'/user'"
+	>
+		<DItem :cellList="item" :index="index"/>
+	</router-link>
   </div>
 </template>
 
@@ -22,7 +39,8 @@
 			return {
 			swiperList:[],
 			iconList:[],
-			cellList:[]
+			cellList:[],
+			productData:[]
 		}
 	},
     components:{
@@ -44,21 +62,30 @@
 			res=>this.swiperList=res.data.data
 			// res=>console.log(res.data.data)
 		)
-		
+		// weekend数据
 		this.$axios({
 			url:'/api/Column',
-			params:{_page:1,_limit:3}
+			params:{_page:1,_limit:4}
 		}).then(
 			res=>this.cellList=res.data.data
 			// res=>console.log(res.data.data)
 		)
+		
+		this.$axios({
+			url:'/api/Home',
+			params:{_page:1,_limit:8}
+		}).then(
+			res=>this.productData=res.data.data
+			// res=>console.log(res.data.data)
+		)		
+		
 	},
     updated(){},
     methods:{}
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .home{}
   .weekend-title{
 	  line-height: .8rem;

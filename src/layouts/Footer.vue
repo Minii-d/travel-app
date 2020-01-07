@@ -3,7 +3,7 @@
 	<div class="foot"></div>
     <ul>
       <router-link tag="li" active-class="active" to="/home">首页</router-link>
-      <router-link tag="li" active-class="active" to="/Login">我的订单</router-link>
+      <router-link tag="li" active-class="active" to="/column">列表</router-link>
       <router-link tag="li" active-class="active" to="/User">我的</router-link>
     </ul>
   </div>

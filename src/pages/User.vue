@@ -3,14 +3,16 @@
     <div class="user-head">
 		<div class="user-head__icon" @click="goBack">
 			<a class="back-icon iconfont">&#xe624;</a>
-		</div>		
+		</div>
+		<div class="logout"><a href="javascript:;" @click="logout">注销</a></div>		
 		<img class="bg-img" src="../../public/images/mybgnew-20161111.jpg">
 		<div class="user-head__login">
-			<router-link to="/Login">
-				<img class="header-img" src="../../public/images/avatar.png">
-				<span>登录/注册</span>
+			<router-link to="/Reset">
+				<img class="header-img" :src="$baseUrl + data.icon">
+				<span>{{data.nikename}}</span>
 			</router-link>
 		</div>
+		
 	</div>
 
 	<div class="my-wallet ">
@@ -23,7 +25,7 @@
 		<UserCell text="我的发票" textIcon="&#xe7bb;" bgColor="#ffa21f" foward="&gt;"/>
 		<UserCell text="我的攻略" textIcon="&#xe7bb;" bgColor="#ffa21f" foward="&gt;"/>
 	</div>
-
+	
   </div>
 </template>
 
@@ -31,15 +33,41 @@
 	import UserCell from "../components/user-cell.vue" 
 	import InputCell from "../components/input-cell.vue" 
 	export default {
-		data(){return {}},
+		data(){return {
+			data:{}
+		}},
 		components:{
 			UserCell,InputCell
 		},
 		methods:{
 			goBack(){
 				this.$router.go(-1)
+			},
+			
+			logout() {
+			  window.localStorage.removeItem('token')
+			  this.$router.push('/home')
 			}
+		},
+		beforeRouteEnter(to, from, next) {
+		  //条件异步
+		  // 抓取token
+		  let token = window.localStorage.getItem('token');
+		  if (token) {
+		    axios({
+		      url: '/api/user',
+		      headers: {
+		        'token': token
+		      }
+		    }).then(
+		      res => res.data.err == 0 ? next(_this=>_this.data=res.data.data) : next('/login')
+			  // res => console.log(res.data.data)
+		    )
+		  } else {
+		    next('/login')
+		  }
 		}
+
 	}
 </script>
 
@@ -78,14 +106,17 @@
 			  text-align: center;
 			  padding-top: .05rem;
 			  box-sizing: border-box;
-			  // overflow: hidden;
 			  .header-img{
 				  width: 1.3rem;
 				  height: 1.3rem;
 				  margin-bottom: .12rem;
+				  border-radius: 50%;
 			  }
 			  span{
 				  color: #fff;
+				  display: block;
+				  height: .7rem;
+				  overflow: hidden;
 			  }
 		  }
 	  }
@@ -97,6 +128,16 @@
 		  background: #fff;
 		  margin-top: .2rem;
 
+	  }
+	  .logout{
+		  position: absolute;
+		  right: .2rem;
+		  top: .2rem;
+		  padding: .1rem;
+		  z-index: 999;
+		  a{
+			 color: #eee; 
+		  }
 	  }
   }
 </style>
