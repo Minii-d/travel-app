@@ -27,7 +27,13 @@
     components:{},
 	methods:{
 		go(){
-			 this.right && this.$router.push('/Reg')
+			if(this.right=="注册"){
+				this.$router.push('/Reg')				
+			}
+			if(this.right=="登录"){
+				this.$router.push('/Login')	
+			}
+				
 		},
 		goBack(){
 			this.$router.go(-1)

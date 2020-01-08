@@ -19,7 +19,7 @@
 <style scoped lang="scss">
   .noPage{
 	  text-align: center;
-	  height: 100%;
+	  padding-bottom: 50%;
 	  img{
 		  margin-top: 10%;
 	  }

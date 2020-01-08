@@ -3,7 +3,7 @@
     <DetailHeader title="景点地图"/>
 	<div id="container"></div>
 	<div class="title">
-		<strong>上海东方明珠</strong><span>景点</span>
+		<strong>{{detail.title}}</strong><span>{{detail.type}}</span>
 	</div>
   </div>
 </template>
@@ -12,20 +12,20 @@
 	import DetailHeader from "../components/DetailHeader.vue"
 	export default {
 		data(){return {
-			disX:121.671964,
-			disY:31.148267
+			 detail:{}
 		}},
 		components:{
 			DetailHeader
 		},
 		mounted(){
+			this.detail = JSON.parse(localStorage.getItem("detail")) ;
 			this.map = new BMap.Map("container");
-			this.point=new BMap.Point(this.disX, this.disY);
+			this.point=new BMap.Point(this.detail.coordinate.x,this.detail.coordinate.y);
 			this.map.centerAndZoom(this.point, 14);  // 初始化地图,设置中心点坐标和地图级别
 			this.map.enableScrollWheelZoom(true);
 			let marker = new BMap.Marker(this.point);  // 创建标注
 			this.map.addOverlay(marker); 
-			marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+			marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画			
 		},
 		updated(){},
 		methods:{}

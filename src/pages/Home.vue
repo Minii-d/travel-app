@@ -2,7 +2,9 @@
   <div class="home">
 	<Header/>
     <Banner :data="swiperList" />
-    <Icons :iconData="iconList" />
+	<router-link to="/column">
+		<Icons :iconData="iconList" />		
+	</router-link>
 	<Favorite/>
 	
 	<!-- 猜你喜欢渲染 -->
@@ -34,7 +36,10 @@
 	import Favorite from '@/components/Favorite.vue'
 	import DCell from '@/components/d-cell.vue'
 	import DItem from '@/components/d-item.vue'
+	
+	let top=0;//存储滚动位置
   export default {
+	  name:"home",
     data(){
 			return {
 			swiperList:[],
@@ -47,6 +52,7 @@
 		Banner,Icons,Favorite,DCell,DItem,Header
 	},
     mounted(){
+		document.documentElement.scrollTop=top;
 		this.$axios({
 			url:'/api/icons',
 			params:{_page:1,_limit:9}
@@ -80,7 +86,10 @@
 		)		
 		
 	},
-    updated(){},
+    destroyed(){
+      top=document.documentElement.scrollTop;  
+      // console.log('destroyed',top);
+    },
     methods:{}
   }
 </script>

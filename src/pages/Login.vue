@@ -30,6 +30,7 @@
 	import InputCell from "@/components/input-cell.vue"
 	import LoginBtn from "@/components/login-btn.vue"
 	
+	let top=0;//存储滚动位置
 	export default {
 		data(){return {
 			username: '',
@@ -39,6 +40,13 @@
 		}},
 		components:{
 			DetailHeader,InputCell,LoginBtn
+		},
+		mounted() {
+			document.documentElement.scrollTop=top;
+		},
+		destroyed(){
+		  top=document.documentElement.scrollTop;  
+		  // console.log('destroyed',top);
 		},
 		// main.js将Login绑定到$root上
 		methods:{

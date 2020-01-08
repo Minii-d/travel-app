@@ -52,6 +52,7 @@
 	  padding-right: 1.4rem; /* 设置宽度，溢出隐藏需要 */
 	  line-height: .48rem;
 	  font-size: .28rem;
+	  color: #212121;
   }
   .item-info .item-info__cont{
 	  padding-right: 1.4rem;  /* 设置宽度，溢出隐藏需要 */

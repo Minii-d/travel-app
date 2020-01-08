@@ -35,7 +35,7 @@
 <style scoped lang="scss">
 	$base-Color:#ff9800;
 	.dd-btn {
-		width: 1.4rem;
+		// width: 1.4rem;
 		text-align: center;
 		.price{
 			display: inline-block;

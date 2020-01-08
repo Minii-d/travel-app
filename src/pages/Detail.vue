@@ -9,11 +9,11 @@
 				<i>!</i><span>{{detail.detail.detailAddress}}</span><i>&gt;</i>
 			</div>
 		</div>
-		<div class="prev" v-for="(item,index) of arrList" :key="index">
+		<router-link class="prev" v-for="(item,index) of arrList" :key="index" :index="index" @click="book" :to="`/OrderForm/${index}`">
 		<!-- <div class="prev"> -->
-			<PrevCell class="prev-cell" text="预订" :objList="item"/>
+			<PrevCell class="prev-cell" text="预订" :objList="item" :type="'obj'"/>
 			<!-- <PrevCell class="prev-cell" text="查看" /> -->
-		</div>
+		</router-link>
 		<div class="scenic">
 			<DetailScenic class="detail-scenic" title="入园参考" :objDetail="objDetail"/>
 			<DetailScenic class="detail-scenic" title="特色玩法" :objDetail="objDetail"/>
@@ -32,6 +32,7 @@
   
 
   export default {
+	name:"detail",
 	// props:{
 	//   productData:{
 	// 	  type:Object,
@@ -71,8 +72,21 @@
     updated() {},
     methods: {
 		getMap(){
-			this.$router.push('/BdMap')
-			console.log(this.$router)
+			this.$router.push('/BdMap');
+			if(this.detail){	
+			let detail = JSON.stringify(this.detail);
+			localStorage.setItem("detail",detail)
+			}
+			// console.log(this.detail)
+		},
+		book(){
+			if(this.detail){
+				let objList = JSON.stringify(this.arrList);
+				localStorage.setItem("objList",objList)
+				
+			// this.$router.push('/OrderForm');
+			// console.log(objList)
+			}
 		}
 	}
   }

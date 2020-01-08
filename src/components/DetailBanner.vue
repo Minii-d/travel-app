@@ -22,10 +22,13 @@
 		 }
 	}, 
     data() {
-      return {}
+      return {
+		 
+	  }
     },
 	mounted() {
-		// console.log(this.bannerData)
+		
+		
 	}
 
   }

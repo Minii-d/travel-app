@@ -1,15 +1,27 @@
 <template>
   <div class="prev-cell">
-    <div class="prev-cell__cont">
+    <div class="prev-cell__cont" v-if="type=='obj'">
 		<h5>{{objList.ticketName}}</h5>
-		<p><img src="https://img1.qunarzz.com/piao/fusion/1804/94/3537f6969acc0c02.png">{{objList.message}}</p>
+		<p><img src="../../public/images/right.png">{{objList.message}}</p>
 		<ul >
 			<li v-for="(val,idx) of objList.tips">{{val}}</li>
 			<!-- <li>无需换票</li> -->
 			<!-- <li>不可退</li> -->
 		</ul>
+		<DdBtn class="dd-btn" :text="text" :per="per" :perPrice="objList.perprice" />
 	</div>
-	<DdBtn class="dd-btn" :text="text" :per="per" :perPrice="objList.perprice"/>
+	
+	<div class="prev-cell__cont" v-if="type=='list'&& objList[this.$route.params._id]" >
+		<h5>{{objList[this.$route.params._id].ticketName}}</h5>
+		<p><img src="../../public/images/right.png">{{objList[this.$route.params._id].message}}</p>
+		<ul >
+			<li v-for="(val,idx) of objList[this.$route.params._id].tips">{{val}}</li>
+			<!-- <li>无需换票</li> -->
+			<!-- <li>不可退</li> -->
+		</ul>
+		<DdBtn class="dd-btn" :text="text" :per="per" :perPrice="objList[this.$route.params._id].perprice" />
+	</div>
+	
   </div>
 </template>
 
@@ -26,10 +38,15 @@
 				default:""
 			},
 			objList:{
-				type:Object,
-				default:function(){
-					return {}
-				}
+				
+			},
+			index:{
+				type:Number,
+				default:0
+			},
+			type:{
+				type:String,
+				default:"obj"
 			}
 		},
 		data(){return {}},
@@ -37,7 +54,8 @@
 			DdBtn
 		},
 		mounted(){
-			// console.log(this.objList)
+			console.log(this.objList)
+			console.log(this.$route.params._id)
 		},
 		updated(){},
 		methods:{}

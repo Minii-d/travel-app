@@ -19,7 +19,7 @@ import NoPage from '../pages/NoPage.vue'
 let routes=[
   {path:'/Home',component:Home},
   {path:'/Column',component:Column},
-  {path:'/OrderForm',component:OrderForm},
+  {path:'/OrderForm/:_id',component:OrderForm},
   {path:'/Follow',component:Follow},
   {path:'/User',component:User},
   {path:'/Reg',component:Reg},
