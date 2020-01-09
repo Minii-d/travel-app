@@ -9,18 +9,20 @@
 				<i>!</i><span>{{detail.detail.detailAddress}}</span><i>&gt;</i>
 			</div>
 		</div>
-		<router-link class="prev" v-for="(item,index) of arrList" :key="index" :index="index" @click="book" :to="`/OrderForm/${index}`">
-		<!-- <div class="prev"> -->
-			<PrevCell class="prev-cell" text="预订" :objList="item" :type="'obj'"/>
+		
+		<router-link v-for="(item,index) of arrList" :key="index" :index="index" @click.native="book" :to="`/OrderForm/${index}`">
+			<div class="prev">
+				<PrevCell class="prev-cell" text="预订" :objList="item" :type="'obj'"/>
+			</div>
 			<!-- <PrevCell class="prev-cell" text="查看" /> -->
 		</router-link>
 		<div class="scenic">
 			<DetailScenic class="detail-scenic" title="入园参考" :objDetail="objDetail"/>
 			<DetailScenic class="detail-scenic" title="特色玩法" :objDetail="objDetail"/>
-		</div>
-		
+		</div>		
 		
 	</div>
+	<van-skeleton title avatar :row="10" v-else />
 </template>
 
 <script>
@@ -112,11 +114,13 @@
 		}
 		.prev{
 			background: #fff;
-			margin: .12rem 0 ;
+			// margin: .12rem 0 ;
 			.prev-cell{
+				background: #fff;
 				padding: .12rem;
 				margin-left: .12rem;
-				border-top: .01rem solid #eee;			
+				border-top: .01rem solid #eee;	
+				color: #323232;
 			}
 		}
 		.scenic{

@@ -1,7 +1,7 @@
 <template>
 	<div class="input-cell">
 		<label >{{label}}</label>
-		<input type="text" :value="value" :placeholder="placeholder" @input="$emit('input',$event.target.value)"/>
+		<input :type="typeVal" :value="value" :placeholder="placeholder" @input="$emit('input',$event.target.value)"/>
 	</div>
 </template>
 
@@ -20,6 +20,10 @@
 	  placeholder:{
 		type:String,
 		default:'请输入...'  
+	  },
+	  typeVal:{
+		  type:String,
+		  default:'text'
 	  }
 	},
     components:{},

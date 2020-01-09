@@ -4,11 +4,11 @@
 	<PrevCell class="prev-cell" per="/张" :objList="objList" :type="'list'"/>
 	<div class="ticketNum">		
 		<label class="label">购买数量</label>
-		<span class="mess">最多购买5张</span>
+		<span class="mess">最多购买<em>5</em>张</span>
 		<div class="changeNum">
-			<input type="button" class="reduce" value="-">
-			<input type="number" class="num" min="1" max="5" value="1" >
-			<input type="button" class="add" value="+">
+			<input type="button" class="reduce" value="-" @click="reduce">
+			<input type="number" class="num" min=1 max=5 value="1" v-model="iptVal">
+			<input type="button" class="add" value="+" @click="add">
 		</div>
 	</div>
 	
@@ -21,7 +21,8 @@
 	export default {
 		name: "order-form",
 		data(){return {
-			objList:{}
+			objList:[],
+			iptVal:1
 		}},
 		components:{
 			DetailHeader,PrevCell
@@ -30,7 +31,17 @@
 			this.objList = JSON.parse(localStorage.getItem("objList"))
 			console.log(this.objList)
 		},
-		methods:{}
+		methods:{
+			reduce(){
+				this.itpVal--;
+			},
+			add(){
+				this.itpVal++;
+			},
+			onSubmit(){
+				
+			}
+		}
 	}
 </script>
 

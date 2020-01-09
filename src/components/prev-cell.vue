@@ -1,23 +1,21 @@
 <template>
   <div class="prev-cell">
+	  <!-- 详情页渲染 -->
     <div class="prev-cell__cont" v-if="type=='obj'">
 		<h5>{{objList.ticketName}}</h5>
 		<p><img src="../../public/images/right.png">{{objList.message}}</p>
 		<ul >
 			<li v-for="(val,idx) of objList.tips">{{val}}</li>
-			<!-- <li>无需换票</li> -->
-			<!-- <li>不可退</li> -->
 		</ul>
 		<DdBtn class="dd-btn" :text="text" :per="per" :perPrice="objList.perprice" />
 	</div>
 	
+	<!-- 订单页渲染 -->
 	<div class="prev-cell__cont" v-if="type=='list'&& objList[this.$route.params._id]" >
 		<h5>{{objList[this.$route.params._id].ticketName}}</h5>
 		<p><img src="../../public/images/right.png">{{objList[this.$route.params._id].message}}</p>
 		<ul >
 			<li v-for="(val,idx) of objList[this.$route.params._id].tips">{{val}}</li>
-			<!-- <li>无需换票</li> -->
-			<!-- <li>不可退</li> -->
 		</ul>
 		<DdBtn class="dd-btn" :text="text" :per="per" :perPrice="objList[this.$route.params._id].perprice" />
 	</div>

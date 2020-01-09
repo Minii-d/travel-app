@@ -5,6 +5,9 @@
 		"email":"123123123.qq.com",
 		"nikename":"小明",
 		"password":"123123",
-		"headIcon":""
+		"icon":"",
+		"time":"",
+		"fans":0,
+		"follow":0		
 	}
 ]
