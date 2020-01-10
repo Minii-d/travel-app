@@ -11,7 +11,10 @@
 			<input type="button" class="add" value="+" @click="add">
 		</div>
 	</div>
-	
+	<van-submit-bar
+	  :price="totalPrice"
+	  button-text="提交订单"
+	/>
   </div>
 </template>
 
@@ -22,31 +25,39 @@
 		name: "order-form",
 		data(){return {
 			objList:[],
-			iptVal:1
+			iptVal:1,
+			totalPrice:0
 		}},
 		components:{
 			DetailHeader,PrevCell
 		},
 		mounted(){
 			this.objList = JSON.parse(localStorage.getItem("objList"))
-			console.log(this.objList)
+			// console.log(this.objList)
+			
 		},
 		methods:{
 			reduce(){
-				this.itpVal--;
+				this.iptVal = parseInt(this.iptVal)-1;
+				if(this.iptVal<=1) this.iptVal=1
 			},
 			add(){
-				this.itpVal++;
+				this.iptVal = parseInt(this.iptVal)+1;
+				if(this.iptVal>=5) this.iptVal=5
 			},
 			onSubmit(){
 				
 			}
+		},
+		updated() {
+			this.totalPrice = parseInt(this.iptVal) * 599 * 100
 		}
 	}
 </script>
 
 <style scoped lang="scss">
 	$bg-color:#18a9b9;
+	$base-color:#ff9800;
 	.order-form{		
 		.prev-cell{
 			background: #fff;
@@ -91,5 +102,44 @@
 				}
 			}
 		}
+		.van-submit-bar{
+				.van-submit-bar__bar{
+					position: fixed;
+					z-index: 92;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					background: #fff;
+					border: .02rem solid #eee;
+					.van-submit-bar__text{
+						position: relative;
+						font-size: .24rem;
+						line-height: 1rem;
+						text-indent: .2rem;
+						color: $base-color;
+						width: 50%;
+						text-align: left;
+					}
+					.van-submit-bar__button{
+						background: $base-color;
+						border-radius: 0;
+						width: 50%;
+						height: 100%;
+						.van-submit-bar__text{
+							font: 500 .36rem/.8rem "";
+							color: $base-color;
+							text-indent: 0;
+							.van-submit-bar__price{
+								font-size: .48rem;
+								
+							}
+						}
+					}
+				}
+		}
 	}
+	
+	
 </style>
+

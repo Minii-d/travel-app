@@ -52,8 +52,8 @@
 			DdBtn
 		},
 		mounted(){
-			console.log(this.objList)
-			console.log(this.$route.params._id)
+			// console.log(this.objList)
+			// console.log(this.$route.params._id)
 		},
 		updated(){},
 		methods:{}

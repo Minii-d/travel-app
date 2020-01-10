@@ -35,7 +35,7 @@ let vm = new Vue({
   data:{
     bLogin:true,
 	bLoading:false,
-	bFooter:false
+	bFooter:true
 	
   }
 }).$mount('#app')

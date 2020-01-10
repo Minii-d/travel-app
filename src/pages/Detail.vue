@@ -6,7 +6,7 @@
 		<div class="sub-navs">
 			<SubNav/>	
 			<div class="address" @click="getMap">
-				<i>!</i><span>{{detail.detail.detailAddress}}</span><i>&gt;</i>
+				<i class="icon-local">!</i><span>{{detail.detail.detailAddress}}</span><i class="icon-right">&gt;</i>
 			</div>
 		</div>
 		
@@ -22,6 +22,7 @@
 		</div>		
 		
 	</div>
+	<!-- 骨架屏 -->
 	<van-skeleton title avatar :row="10" v-else />
 </template>
 
